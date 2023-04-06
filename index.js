@@ -9,7 +9,7 @@ function calculateBMI() {
     if (bmi < 18.5) {
         document.getElementById("category").innerHTML = `You are underweight. You need to increase your weight by ${(((height/100) ** 2)*18.5 - weight).toFixed(2)} kg`;
     } else if (bmi >= 18.5 && bmi < 25) {
-        document.getElementById("category").innerHTML = "You are of normal weight. ";
+        document.getElementById("category").innerHTML = "You are of normal weight. Keep do exercise and stay healthy.";
     } else if (bmi >= 25 && bmi < 30) {
         document.getElementById("category").innerHTML = `You are overweight. You need to decrease your weight by ${(weight - ((height/100) ** 2)*24.9).toFixed(2)} kg`;
     } else {
