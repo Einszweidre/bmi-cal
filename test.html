@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bmi Calc</title>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="assets/vendor/animate.css/animate.min.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+  <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+  <link href="assets/vendor/remixicon/remixicon.css" rel="stylesheet">
+  <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+
+  <!-- Main CSS File -->
+  <link href="assets/css/style.css" rel="stylesheet">
+</head>
+<!-- Header Section -->
+<body>
+  <header id="header" class="fixed-top d-flex align-items-center">
+    <div class="container d-flex align-items-center">
+        <h1  class="logo me-auto"><a href="test.html">BmiC++</a></h1>
+        <nav id="navbar" class="navbar">
+            <ul>
+                <li><a href="test.html" class="active">Home</a></li>
+
+                <li><a href="#calc" class="active">Calculator </a></li>
+        
+                <li class="dropdown"><a href="#"><span>Products</span><i class="bi bi-chevron-down"></i>
+                    <ul>
+                        <li><a href="product.html">Lean</a></li>
+                        <li><a href="product2.html">Bulk</a></li>
+                    </ul>
+                </li>
+
+
+                <li><a href="team.html" class = "active">Team</a></li>
+            </ul>
+        </nav>
+    </div>
+  </header>
+
+  <!-- ======= front Section ======= -->
+  <section id="front">
+    <div id="frontpage" data-bs-interval="5000" class="page slide page-fade" data-bs-ride="page">
+
+      <ol class="page-indicators" id="front-page-indicators"></ol>
+      <div class="page-inner" role="listbox">
+        <div class="page-item active" style="background-image: url(assets/img/front.jpg)">
+          <div class="page-container">
+            <div class="container">
+              <h2 class="animate__animated animate__fadeInUp">Welcome to <span>BmiC++</span></h2>
+              <p class="animate__animated animate__fadeInDown">Calculating your BMI (Body Mass Index) is a simple and effective way to assess your weight status and determine if you are at a healthy weight. BMI is a widely used measure of body fat that takes into account your height and weight, and can help you better understand your overall health and potential risks for certain health conditions.</p>
+              <a href="#calc" class="btn-get-started animate__animated animate__fadeInUp scrollto">Calculate your BMI</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Calculator Section -->
+  <main id ="main">
+    <section id="calc" class="calc">
+        <div class="container">
+            <h1>BMI Calculator</h1>
+            <form>
+            <label>Name:</label><br>
+            <input type="text" id="name" required>
+            <label>Height (cm):</label><br>
+            <input type="number" id="height" required>
+            <label>Weight (kg):</label><br>
+            <input type="number" id="weight" required>
+            <label>Age:</label><br>
+            <input type="number" id="age" required><br>
+            <button type="button" onclick="calculateBMI()">Calculate</button>
+            </form>
+            <div id="result"></div>
+            <div id="recommendations"></div>
+            <button id="product-button" style="display:none;">Recommended Product for You Here</button>
+            </div>
+            <script src="script.js"></script>
+        </div>
+    </section>
+  </main>
+
+</body>
+</html>
