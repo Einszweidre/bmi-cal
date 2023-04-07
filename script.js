@@ -85,3 +85,77 @@ function calculateBMI() {
         }
     }
 }
+
+
+let dataReview = [
+    {
+        "id": 1,
+        "username": "Blestro",
+        "body": "BmiC++ GG banget!"
+    },
+    {
+        "id": 2,
+        "username": "Hangga",
+        "body": "BmiC++ GG banget!"
+    },
+    {
+        "id": 3,
+        "username": "Zul",
+        "body": "BmiC++ GG banget!"
+    },
+    {
+        "id": 4,
+        "username": "Timotius",
+        "body": "BmiC++ GG banget!"
+    },
+    {
+        "id": 5,
+        "username": "Vincent",
+        "body": "BmiC++ GG banget!"
+    }
+]
+
+
+// read data => masukin data js ke html
+function readData(){
+    if (localStorage.getItem('dataReview')){
+        data = JSON.parse(localStorage.getItem("dataReview")); // buat nyimpen di local storage
+    }
+
+dataReview.reverse()
+let list = document.querySelector('#list') //id tempat naro review
+let stringHtml = ""
+for (let i = 0; i < dataReview.length; i++){
+    stringHtml += ` 
+    <div class="" >
+        <div> class="name">
+            <span>${dataReview[i].username}</span>
+            <button>X</button>
+        </div>
+        <hr>
+        <p><i>"${dataReview[i].body}"</i></p>
+    </div>
+    `// buat masukin dataReview username ama body ke div html tempat review
+    
+}
+list.innerHTML = stringHtml; //
+}
+readData(); 
+
+function addData(e){
+    e.preventDefault(); // special case kalo pake onSubmit di HTML biar pas nge add review ga ngerefresh browsernya 
+    let username = document.querySelector('#inputName').value 
+    let body = document.querySelector('#inputComment').value
+    let obj = {
+        id: dataReview[0].id + dataReview.length,
+        username,
+        body
+    }
+    console.log(obj)
+     dataReview.push(obj);
+    document.querySelector('#inputName').value = '';
+    document.querySelector('#inputComment').value = '';
+    localStorage.setItem('dataReview', JSON.stringify(dataReview, null, 2));
+    readData()
+
+}
