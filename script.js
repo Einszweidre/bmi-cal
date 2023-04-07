@@ -128,7 +128,7 @@ let stringHtml = ""
 for (let i = 0; i < dataReview.length; i++){
     stringHtml += ` 
     <div class="" >
-        <div> class="name">
+        <div class="name">
             <span>${dataReview[i].username}</span>
             <button>X</button>
         </div>
