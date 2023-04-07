@@ -73,8 +73,15 @@ function calculateBMI() {
         document.getElementById("recommendations1").innerHTML = recommendations[category][0];
         document.getElementById("recommendations2").innerHTML = recommendations[category][1];
         document.getElementById("recommendations3").innerHTML = recommendations[category][2];
-
+        
+        if(bmi >= 25){
         document.getElementById("link-product").innerHTML = `Check our recommended supplements for your weightloss training`;
+        document.getElementById("link-product").style.display = "flex";
+        document.getElementById("link-product2").style.display = "none";
+        }else if(bmi < 25){
         document.getElementById("link-product2").innerHTML = `Check our recommended supplements for your bulking training`;
+        document.getElementById("link-product2").style.display = "flex";
+        document.getElementById("link-product").style.display = "none";
+        }
     }
 }

@@ -374,3 +374,17 @@ button {
   font-size: 24px;
   justify-content: center;
 }
+
+/*--------------------------------------------------------------
+# Comments
+--------------------------------------------------------------*/
+.cbox{
+  display:flex;
+  justify-content: flex-start;
+  margin-left: 30px;
+}
+.list{
+  display: flex;
+  justify-content: flex-end;
+  margin-right: 30px;
+}
