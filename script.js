@@ -34,9 +34,9 @@ function calculateBMI() {
     let age = parseFloat(document.getElementById("age").value);
     let category;
 
-    let bmi = weight / ((height/100) ** 2);
+    let bmi = weight / ((height / 100) ** 2);
 
-    if(!height || !weight || !name || !age){
+    if (!height || !weight || !name || !age) {
         document.getElementById("result").innerHTML = "Please fill all data";
         document.getElementById("category").innerHTML = "";
         document.getElementById("exercise").innerHTML = "";
@@ -45,43 +45,43 @@ function calculateBMI() {
         document.getElementById("recommendations3").innerHTML = "";
         document.getElementById("link-product").innerHTML = "";
         document.getElementById("link-product2").innerHTML = "";
-    } else{
+    } else {
         document.getElementById("result").innerHTML = `Hello ${name}, your BMI is: ` + bmi.toFixed(2);
 
         if (bmi < 18.5) {
-            document.getElementById("category").innerHTML = `You are underweight. You need to increase your weight by ${(((height/100) ** 2)*18.5 - weight).toFixed(2)} kg`;
+            document.getElementById("category").innerHTML = `You are underweight. You need to increase your weight by ${(((height / 100) ** 2) * 18.5 - weight).toFixed(2)} kg`;
             category = "underweight"
         } else if (bmi >= 18.5 && bmi < 25) {
             document.getElementById("category").innerHTML = "You are of normal weight. Keep do exercises and stay healthy.";
             category = "normal"
         } else if (bmi >= 25 && bmi < 30) {
-            document.getElementById("category").innerHTML = `You are overweight. You need to decrease your weight by ${(weight - ((height/100) ** 2)*24.9).toFixed(2)} kg`;
+            document.getElementById("category").innerHTML = `You are overweight. You need to decrease your weight by ${(weight - ((height / 100) ** 2) * 24.9).toFixed(2)} kg`;
             category = "overweight"
         } else {
-            document.getElementById("category").innerHTML = `You are obese. You need to decrease your weight by ${(weight - ((height/100) ** 2)*24.9).toFixed(2)} kg. Consult to doctor or if needed.`;
+            document.getElementById("category").innerHTML = `You are obese. You need to decrease your weight by ${(weight - ((height / 100) ** 2) * 24.9).toFixed(2)} kg. Consult to doctor or if needed.`;
             category = "obese"
         }
 
-        if (age < 18){
+        if (age < 18) {
             document.getElementById("exercise").innerHTML = exercise.teen;
-        } else if (age >= 18 && age < 60){
+        } else if (age >= 18 && age < 60) {
             document.getElementById("exercise").innerHTML = exercise.adult;
-        } else{
+        } else {
             document.getElementById("exercise").innerHTML = exercise.elder;
         }
 
         document.getElementById("recommendations1").innerHTML = recommendations[category][0];
         document.getElementById("recommendations2").innerHTML = recommendations[category][1];
         document.getElementById("recommendations3").innerHTML = recommendations[category][2];
-        
-        if(bmi >= 25){
-        document.getElementById("link-product").innerHTML = `Check our recommended supplements for your weightloss training`;
-        document.getElementById("link-product").style.display = "flex";
-        document.getElementById("link-product2").style.display = "none";
-        }else if(bmi < 25){
-        document.getElementById("link-product2").innerHTML = `Check our recommended supplements for your bulking training`;
-        document.getElementById("link-product2").style.display = "flex";
-        document.getElementById("link-product").style.display = "none";
+
+        if (bmi >= 25) {
+            document.getElementById("link-product").innerHTML = `Check our recommended supplements for your weightloss training`;
+            document.getElementById("link-product").style.display = "flex";
+            document.getElementById("link-product2").style.display = "none";
+        } else if (bmi < 25) {
+            document.getElementById("link-product2").innerHTML = `Check our recommended supplements for your bulking training`;
+            document.getElementById("link-product2").style.display = "flex";
+            document.getElementById("link-product").style.display = "none";
         }
     }
 }
@@ -117,16 +117,16 @@ let dataReview = [
 
 
 // read data => masukin data js ke html
-function readData(){
-    if (localStorage.getItem('dataReview')){
+function readData() {
+    if (localStorage.getItem('dataReview')) {
         data = JSON.parse(localStorage.getItem("dataReview")); // buat nyimpen di local storage
     }
 
-dataReview.reverse()
-let list = document.querySelector('#list') //id tempat naro review
-let stringHtml = ""
-for (let i = 0; i < dataReview.length; i++){
-    stringHtml += ` 
+    dataReview.reverse()
+    let list = document.querySelector('#list') //id tempat naro review
+    let stringHtml = ""
+    for (let i = 0; i < dataReview.length; i++) {
+        stringHtml += ` 
     <div class="" >
         <div class="name">
             <span>${dataReview[i].username}</span>
@@ -136,26 +136,32 @@ for (let i = 0; i < dataReview.length; i++){
         <p><i>"${dataReview[i].body}"</i></p>
     </div>
     `// buat masukin dataReview username ama body ke div html tempat review
-    
-}
-list.innerHTML = stringHtml; //
-}
-readData(); 
 
-function addData(e){
-    e.preventDefault(); // special case kalo pake onSubmit di HTML biar pas nge add review ga ngerefresh browsernya 
-    let username = document.querySelector('#inputName').value 
-    let body = document.querySelector('#inputComment').value
-    let obj = {
-        id: dataReview[0].id + dataReview.length,
-        username,
-        body
     }
-    console.log(obj)
-     dataReview.push(obj);
-    document.querySelector('#inputName').value = '';
-    document.querySelector('#inputComment').value = '';
-    localStorage.setItem('dataReview', JSON.stringify(dataReview, null, 2));
-    readData()
+    list.innerHTML = stringHtml; //
+}
+readData();
+
+function addData(e) {
+    e.preventDefault(); // special case kalo pake onSubmit di HTML biar pas nge add review ga ngerefresh browsernya 
+    let username = document.querySelector('#inputName').value
+    let body = document.querySelector('#inputComment').value
+    if (!username || !body) {
+        alert("masukin dulu dongsss, jangan kosongan aja")
+    } else {
+        let obj = {
+            id: dataReview[0].id + dataReview.length,
+            username,
+            body
+        }
+
+        dataReview.push(obj);
+        document.querySelector('#inputName').value = '';
+        document.querySelector('#inputComment').value = '';
+        localStorage.setItem('dataReview', JSON.stringify(dataReview, null, 2));
+        readData()
+
+    }
+
 
 }
