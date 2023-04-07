@@ -93,10 +93,32 @@
                     </div>
                 </div>
             </div>
-            <script src="script.js"></script>
         </div>
     </section>
   </main>
+
+  <!-- Comment Section -->
+  <br>
+  <br>
+  <div id="comments">
+    <h1>Comments</h1>
+    <div id ="commentBox">
+      <div class="cbox">
+        <form action="" onsubmit="addData(event)">
+          <label for="">Name</label><br>
+          <input id ="inputName" type="text"><br>
+          <label for="">Comments</label><br>
+          <textarea name="" id ="inputComment" cols="100" rows="10"></textarea><br>
+          <button type ="submit">Send</button>
+        </form>    
+      </div>
+      <div class="cbox"></div>
+      <div id="list">
+
+      </div>
+    </div>
+    <script src="script.js"></script>
+  </div>
 
 </body>
 </html>
